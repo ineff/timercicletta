@@ -60,7 +60,7 @@ def setTimeLabel(label): # Function which set a label to the current time
 
 def updateCountdown(window):
 
-   flashTime = Timer(min=4,sec=30) # Time when start to flashing
+   flashTime = Timer(min=1,sec=0) # Time when start to flashing
    finish = Timer() # Time is end
 
    window.label.countdown.dec() # Decrement the countdown
