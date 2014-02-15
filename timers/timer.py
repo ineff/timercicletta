@@ -1,8 +1,8 @@
-#! /usr/bin/python
-# A module exporting a class that implement a countdown
+# A module exporting a class that implement a Timer 
 # and some auxiliary functions
 
 def fromTime2Str(num):   # Auxiliary function to transform integer in secons/minutes/hours
+
    sTime = ''
    if num < 10:
       sTime = '0'+str(num)
@@ -10,9 +10,17 @@ def fromTime2Str(num):   # Auxiliary function to transform integer in secons/min
       sTime = str(num)
    return sTime
 
+def fromArr2Time(arr): # Auxliary function that takes an array of two integer and return a Timer
 
+   if (len(arr) != 2):
+      return Timer()
+   else:
+      return Timer(hour=arr[0], min=arr[1])   
+   
 
-class CountDown(object):
+# The class for Timer
+
+class Timer(object):
 
    def __init__(self,hour=0,min=0,sec=0):
 
@@ -30,20 +38,20 @@ class CountDown(object):
 
        return ':'.join(map(fromTime2Str,[self.hour,self.min,self.sec]))
 
-   # def __cmp__(self,other): # Methods for comparing times
+   def __cmp__(self,other): # Methods for comparing times
 
-   #     if self.hour > other.hour: # if self's hour are greater than other's then self > other
-   #         return 1
-   #     if self.hour == other.hour:# if self and other have same hour 
-   #         if self.min > other.min: # and self's min > other's min than self > other
-   #             return 1
-   #         if self.min == other.min: # and self and other have the same min
-   #             if self.sec > other.sec: # ... well you got it, don't you?
-   #                 return 1
-   #             if self.sec == other.sec:
-   #                 return 0
-   #     # If any of the above if fails then other > self
-   #     return -1
+       if self.hour > other.hour: # if self's hour are greater than other's then self > other
+           return 1
+       if self.hour == other.hour:# if self and other have same hour 
+           if self.min > other.min: # and self's min > other's min than self > other
+               return 1
+           if self.min == other.min: # and self and other have the same min
+               if self.sec > other.sec: # ... well you got it, don't you?
+                   return 1
+               if self.sec == other.sec:
+                   return 0
+       # If any of the above if fails then other > self
+       return -1
 
    def __lt__(self,other): # We define explicitly these methods too for compatibility with python3
       if self.hour < other.hour:
