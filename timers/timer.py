@@ -83,7 +83,10 @@ class Timer(object):
            self.min = self.min + 1 
            return
        self.min = 0 # otherwise we restart minutes and increments hours
-       self.hour = self.hour + 1
+       if self.hour < 23:
+          self.hour = self.hour + 1
+          return
+       self.hour = 0
        return 
 
    def dec(self): # method to decrement the countdown
@@ -103,3 +106,16 @@ class Timer(object):
        return
 
 
+   def incMin(self):
+      if self.min < 59:
+         self.min = self.min + 1
+         return
+      self.min = 0
+      if self.hour < 23:
+         self.hour = self.hour + 1
+         return
+      self.hour = 0
+      return 
+
+   # Maybe one day the decMin will be implemented too, 
+   # but that's for another day
