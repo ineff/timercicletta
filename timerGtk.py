@@ -30,12 +30,13 @@ display = Gdk.Display.get_default()
 screen = display.get_default_screen()
 
 provider.load_from_data(b"""
+GtkLabel {
+font-size: 60;
+}
+
 #Alarm {
 background-color: black;
 color: white;
-}
-#AlarmLabel{
-font-size: 100;
 }
 """)
 
