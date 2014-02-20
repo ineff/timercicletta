@@ -37,6 +37,11 @@ class ClockWindow(Gtk.Window):
 
       self.updateSchedule()
 
+      self.connect('delete-event', Gtk.main_quit) # Connect the termination function to the event 
+                                                  # of deletion of the window
+      self.show_all() # Make visible the window and every element it contains
+
+
       GLib.timeout_add_seconds(1,self.setTimeLabel) # Set the clock
       GLib.timeout_add_seconds(60*60*24,self.updateSchedule) # Every day update the schedule
 
@@ -92,7 +97,7 @@ class AlarmWindow(Gtk.Window):
       self.add(self.hbox)
 
    def reset(self): # Reset the counter
-      self.label.countdown = Timer(hour=0,min=5,sec=0)
+      self.countdown = Timer(hour=0,min=5,sec=0)
 
    def start(self): # Start countdown
       

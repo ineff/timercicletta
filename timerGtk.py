@@ -17,13 +17,6 @@ from windows.windows import ClockWindow, AlarmWindow
    # se quando giunge l'orario meno 5 minuti crea una alarmWindow ... to be continued
 
 window = ClockWindow() # Create the window
-window.connect('delete-event', Gtk.main_quit) # Connect the termination function to the event of deletion of the window
-window.show_all() # Make visible the window and every element it contains
-
-# For creating the alarm we let run in the background a routine that creates the alarm
-# at a given time
-#GLib.timeout_add_secs(60,alarmCreator) # run every minute the callback
-
 
 provider = Gtk.CssProvider() # This object will serve to load the appearance property
 display = Gdk.Display.get_default() 
