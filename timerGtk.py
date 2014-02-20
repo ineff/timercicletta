@@ -25,6 +25,7 @@ screen = display.get_default_screen()
 provider.load_from_data(b"""
 GtkLabel {
 font-size: 60;
+padding: 0.5em;
 }
 
 #Alarm {
