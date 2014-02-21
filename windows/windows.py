@@ -22,7 +22,7 @@ class ClockWindow(Gtk.Window):
 
       self.hbox = Gtk.Box(spacing=6) # Create a container in which put the timer 
       self.label = Gtk.Label('') # Create a label which will hold the current time
-      self.schedule = {'lu':[],'ma':[],'me':[],'gi':[],'ve':[],'sa':[],'do':[]} 
+      self.schedule = {'lu':[],'ma':[],'me':[],'gi':[],'ve':[],'sa':[],'do':[]}
       # schedule is a dictionary containing for every day a field which contain 
       # the list of start time of programs
       # for the day
@@ -72,7 +72,7 @@ class ClockWindow(Gtk.Window):
       
       timeNow = Timer(hour=hour,min=minutes)
       
-      for index in range(0,5):
+      for index in range(0,8):
          timeNow.incMin()
 
       if timeNow in self.schedule[day[today]] and not self.alarm.get_property('visible'):
@@ -90,14 +90,15 @@ class AlarmWindow(Gtk.Window):
       Gtk.Window.__init__(self,title='Alarm')
       self.hbox = Gtk.Box(spacing=6)
       self.label = Gtk.Label('')
-      self.countdown = Timer(hour=0,min=5,sec=0) # Add to the label a countdown
+      self.countdown = Timer(hour=0,min=8,sec=0) # Add to the label a countdown
 
       self.hbox.pack_start(self.label, True, True, 0)
-      self.set_name('Alarm')
+      self.set_name('AlarmWindow')
+      self.label.set_name('Alarm')
       self.add(self.hbox)
 
    def reset(self): # Reset the counter
-      self.countdown = Timer(hour=0,min=5,sec=0)
+      self.countdown = Timer(hour=0,min=8,sec=0)
 
    def start(self): # Start countdown
       

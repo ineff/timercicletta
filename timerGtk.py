@@ -28,6 +28,11 @@ font-size: 60;
 padding: 0.5em;
 }
 
+#AlarmWindow {
+background-color: black;
+color: white;
+}
+
 #Alarm {
 background-color: black;
 color: white;
