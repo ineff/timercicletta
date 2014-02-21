@@ -50,7 +50,7 @@ class ClockWindow(Gtk.Window):
       
       days = ['lu','ma','me','gi','ve','sa','do'] 
       dec = JSONDecoder(encoding='ascii') 
-      rawdata = urlopen('http://www.radiocicletta.it:80/programmi.json').read() # We retrive the json in str type
+      rawdata = urlopen('http://www.radiocicletta.it:80/programmi.json').read() # We retrieve the json in str type
       # Now we extract from string rawdata the list of programs active (stato == 1)
       listaProgs = filter(lambda x: x['stato'] == '1',dec.decode(rawdata)['programmi']) 
       # Finally insert in the dictionary schedule the list of start time of the programs
@@ -72,8 +72,8 @@ class ClockWindow(Gtk.Window):
       
       timeNow = Timer(hour=hour,min=minutes)
       
-      for index in range(0,8):
-         timeNow.incMin()
+      for index in range(0,8): # This is necessary cause changing directly min field in the timer
+         timeNow.incMin()      # won't change the hour too.
 
       if timeNow in self.schedule[day[today]] and not self.alarm.get_property('visible'):
          self.alarm.reset() # Reset the countdown of the self
@@ -125,7 +125,7 @@ class AlarmWindow(Gtk.Window):
          self.hide()               # make the self disappear
          return False # and stop the countdown
    
-      return True # Otherwise we countinue to cycle
+      return True # Otherwise we continue to cycle
 
 
 
