@@ -6,9 +6,7 @@ from gi.repository import Gdk
 
 import time
 
-from timers.timer import Timer
-
-from windows.windows import ClockWindow, AlarmWindow
+from windows.windows import ClockWindow #, AlarmWindow
 
 # def alarmCreator(): # This callback has the only aim to set the alarms to give hours.
 
@@ -24,7 +22,7 @@ screen = display.get_default_screen()
 
 provider.load_from_data(b"""
 GtkLabel {
-font-size: 60;
+font-size: 10ex;
 padding: 0.5em;
 }
 
